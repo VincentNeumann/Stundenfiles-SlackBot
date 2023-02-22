@@ -1,1 +1,2 @@
 # Stundenfiles-SlackBot
+Hallo
