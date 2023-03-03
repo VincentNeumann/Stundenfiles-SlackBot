@@ -1,0 +1,45 @@
+{
+    "stations":
+    [
+        {
+            "name"  : "bayern1",
+            "prefix"  : "b1",
+            "dir"   : "/br/hf/7t/b1/"
+        },
+        {
+            "name"  : "bayern2",
+            "prefix"  : "b2nord",
+            "dir"   : "/br/hf/7t/b2/"
+        },
+        {
+            "name"  : "bayern3",
+            "prefix"  : "b3",
+            "dir"   : "/br/hf/7t/b3/"
+        },
+        {
+            "name"  : "brklassik",
+            "prefix"  : "brklassik",
+            "dir"   : "/br/hf/7t/brklassik/"
+        },
+        {
+            "name"  : "br24",
+            "prefix"  : "br24",
+            "dir"   : "/br/hf/7t/br24/"
+        },
+        {
+            "name"  : "puls",
+            "prefix"  : "puls",
+            "dir"   : "/br/hf/7t/puls/"
+        },
+        {
+            "name"  : "brheimat",
+            "prefix"  : "brheimat",
+            "dir"   : "/br/hf/7t/brheimat/"
+        },
+        {
+            "name"  : "brschlager",
+            "prefix"  : "brschlager",
+            "dir"   : "/br/hf/7t/brschlager/"
+        }
+    ]
+}
