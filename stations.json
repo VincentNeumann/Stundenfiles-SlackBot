@@ -2,42 +2,50 @@
     "stations":
     [
         {
-            "name"  : "bayern1",
+            "name"  : "Bayern1",
+            "slackIcon": ":radio-bayern1:",
             "prefix"  : "b1",
             "dir"   : "/br/hf/7t/b1/"
         },
         {
-            "name"  : "bayern2",
-            "prefix"  : "b2nord",
+            "name"  : "Bayern 2",
+            "slackIcon": ":radio-bayern2:",
+            "prefix"  : "b2sued",
             "dir"   : "/br/hf/7t/b2/"
         },
         {
-            "name"  : "bayern3",
+            "name"  : "Bayern3",
+            "slackIcon": ":radio-bayern3:",
             "prefix"  : "b3",
             "dir"   : "/br/hf/7t/b3/"
         },
         {
-            "name"  : "brklassik",
+            "name"  : "BR Klassik",
+            "slackIcon": ":radio-br-klassik:",
             "prefix"  : "brklassik",
             "dir"   : "/br/hf/7t/brklassik/"
         },
         {
-            "name"  : "br24",
+            "name"  : "BR24",
+            "slackIcon": ":br24:",
             "prefix"  : "br24",
             "dir"   : "/br/hf/7t/br24/"
         },
         {
             "name"  : "puls",
+            "slackIcon": ":radio-puls:",
             "prefix"  : "puls",
             "dir"   : "/br/hf/7t/puls/"
         },
         {
-            "name"  : "brheimat",
+            "name"  : "BR Heimat",
+            "slackIcon": ":radio-br-heimat",
             "prefix"  : "brheimat",
             "dir"   : "/br/hf/7t/brheimat/"
         },
         {
-            "name"  : "brschlager",
+            "name"  : "BR Schlager",
+            "slackIcon": ":radio-br-schlager:",
             "prefix"  : "brschlager",
             "dir"   : "/br/hf/7t/brschlager/"
         }

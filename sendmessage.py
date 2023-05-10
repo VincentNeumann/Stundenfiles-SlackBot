@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from slack2 import Slack
+from slack_sdk import Slack
 import json
 
 f = open('secret.json')
