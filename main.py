@@ -1,8 +1,8 @@
 import requests
 import json
-from datetime import datetime, timedelta, timezone, tzinfo
+import pytz
+from datetime import datetime, timedelta
 from slack_sdk import WebClient
-#import pytz
 
 
 #BOT_NAME = 'stundenfiles'
@@ -11,14 +11,17 @@ URL="https://mcdn-a.akamaihd.net"
 
 
 def construct_filename(prefix, directory, time):
-    formatet_time = time.strftime("%Y:%m:%dT%H0000+0200.mp4")
+    utc_dif = get_utc_dif(time)
+    formatet_time = time.strftime("%Y:%m:%dT%H0000+" + utc_dif + ".mp4")
     filename = prefix + "_"  + str(formatet_time).replace(":","")
     return URL + directory + filename
 
-def correct_filename(prefix, directory, time):
-    formatet_time = time.strftime("%Y:%m:%dT%H0000+0200.mp4")
-    filename = prefix + "_"  + str(formatet_time).replace(":","")
-    return URL + directory + filename
+def get_utc_dif(time):
+    german_timezone = pytz.timezone('Europe/Berlin')
+    offset = german_timezone.utcoffset(time)
+    offset_string =  "0" + str(offset.seconds // 3600) + "00"
+    return offset_string
+
 
 def file_exists(url):
     res = requests.get(url)
@@ -53,21 +56,26 @@ def get_slackmessage(station):
     return station["name"] + " " + station["slackIcon"] + " " 
 
 if __name__ == "__main__":
+
     token = get_token()
-    print(token)
     channel = get_channel()
     stations = get_stations()
 
     slack_bot = WebClient(token = token)
-    
+    failed = False
     for station in stations:
         #now = datetime.datetime.now(pytz.timezone("Europe/Berlin"))
         last_hour = datetime.now() - timedelta(hours=1)
         filename = construct_filename(station["prefix"], station["dir"], last_hour)
+        
         message = ""
         if not file_exists(filename):
-            message = f'>*FAILURE*: For {get_slackmessage(station)} the Stundenfile was not found: \n>{filename}'
-        #elif file_exists(filename) != construct_filename(filename):
-        #    message = f'>*FAILURE*: For {station["name"]} the Stundenfile is not valid: \n>{filename}'
+
+            message = '>*FAILURE*: For {0} the Stundenfile was not found: \n>{1}'.format(get_slackmessage(station), filename)
             slack_bot.chat_postMessage(channel = channel, text = message)
+            failed = True
             print(message)
+
+    if not failed:
+        message = '>*SUCCESS*: All Stundenfiles found'
+        slack_bot.chat_postMessage(channel = channel, text = message)
